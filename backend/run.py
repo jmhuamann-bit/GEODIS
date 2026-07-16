@@ -1,15 +1,14 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="app/templates"
+)
 
 @app.route("/")
 def inicio():
-    return """
-    <h1>🚚 Plataforma GEODIS</h1>
-    <h2>Primera versión funcionando</h2>
-    <p>¡Felicidades! La aplicación está publicada en Internet.</p>
-    """
+    return render_template("index.html")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
